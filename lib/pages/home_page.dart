@@ -12,7 +12,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    DatabaseSqlite().openConnection();
+    _database();
+  }
+
+  Future<void> _database() async {
+    var database = await DatabaseSqlite().openConnection();
+
+    database.insert('teste', {'nome': 'Jonatas Santos'});
   }
 
   @override
